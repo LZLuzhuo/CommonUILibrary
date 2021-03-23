@@ -1,0 +1,35 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+    defaultConfig {
+        applicationId "me.luzhuo.commonuilibrary"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+//    implementation project(path: ':lib_common_ui')
+     implementation 'me.luzhuo.android:lib_common_ui:1.0.14-SNAPSHOT'
+
+    // implementation project(path: ':emoji')
+    implementation 'me.luzhuo.android:emoji:1.0.0-SNAPSHOT'
+    implementation project(path: ':emoji_biaoqing')
+
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'me.luzhuo.android:lib_core:2.0.1-SNAPSHOT'
+}

@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName '1.0.0'
+        multiDexEnabled true
+
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    compileOnly 'androidx.appcompat:appcompat:1.2.0'
+    compileOnly 'androidx.constraintlayout:constraintlayout:2.0.4'
+    compileOnly 'me.luzhuo.android:lib_core:2.0.1-SNAPSHOT'
+}
+apply from: 'maven.gradle'
+//apply from: 'jcenter.gradle'

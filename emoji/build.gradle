@@ -1,0 +1,15 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion this.rootProject.android.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion this.rootProject.android.minSdkVersion
+        targetSdkVersion this.rootProject.android.targetSdkVersion
+    }
+}
+
+dependencies {
+}
+apply from: 'maven.gradle'
+//apply from: 'jcenter.gradle'

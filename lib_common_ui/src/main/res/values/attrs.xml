@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ToolBarView">
+        <attr name="toolbar_mode" format="enum">
+            <enum name="Title" value="0"/>
+            <enum name="Search" value="1"/>
+        </attr>
+        <attr name="toolbar_title" format="string"/>
+        <attr name="toolbar_hint" format="string"/>
+        <attr name="toolbar_rtext" format="string"/>
+        <attr name="toolbar_rimage" format="reference"/>
+        <attr name="toolbar_search_editable" format="boolean"/>
+        <attr name="toolbar_have_return" format="boolean"/>
+        <attr name="toolbar_have_voice" format="boolean"/>
+    </declare-styleable>
+</resources>

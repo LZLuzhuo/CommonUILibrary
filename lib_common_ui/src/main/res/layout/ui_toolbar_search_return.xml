@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="@color/core_colorForeground"
+    tools:visibility="visible">
+
+    <ImageView
+        android:id="@+id/ui_toolbar_return"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingTop="10dp"
+        android:paddingEnd="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ui_toolbar_return"
+        tools:ignore="NewApi"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/ui_toolbar_rtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:paddingStart="5dp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="NewApi"
+        tools:text="取消"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/ui_toolbar_search_bg"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ui_toolbar_search_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ui_toolbar_rtext"
+        app:layout_constraintStart_toEndOf="@+id/ui_toolbar_return"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ui_toolbar_search_icon"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ui_toolbar_search_bg"
+        app:layout_constraintStart_toStartOf="@+id/ui_toolbar_search_bg"
+        app:layout_constraintTop_toTopOf="@+id/ui_toolbar_search_bg"
+        app:srcCompat="@mipmap/ui_toolbar_search_icon" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/ui_toolbar_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="#00000000"
+        android:imeOptions="actionSearch"
+        android:singleLine="true"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ui_toolbar_search_bg"
+        app:layout_constraintEnd_toStartOf="@+id/ui_toolbar_voice"
+        app:layout_constraintStart_toEndOf="@+id/ui_toolbar_search_icon"
+        app:layout_constraintTop_toTopOf="@+id/ui_toolbar_search_bg"
+        tools:hint="面料" />
+
+    <ImageView
+        android:id="@+id/ui_toolbar_voice"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/ui_toolbar_search_bg"
+        app:layout_constraintEnd_toEndOf="@+id/ui_toolbar_search_bg"
+        app:layout_constraintTop_toTopOf="@+id/ui_toolbar_search_bg"
+        app:srcCompat="@mipmap/ui_toolbar_voice"
+        tools:ignore="NewApi"
+        tools:visibility="visible" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="15dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="15dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
