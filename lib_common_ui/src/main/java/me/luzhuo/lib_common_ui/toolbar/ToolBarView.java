@@ -20,6 +20,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,9 +37,13 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import androidx.fragment.app.FragmentActivity;
 import me.luzhuo.lib_common_ui.R;
+import me.luzhuo.lib_core.app.color.ColorManager;
 import me.luzhuo.lib_core.app.keyboard.KeyBoardManager;
+import me.luzhuo.lib_core.ui.calculation.UICalculation;
 
 public class ToolBarView extends ConstraintLayout implements View.OnClickListener, TextView.OnEditorActionListener {
+    private ColorManager color;
+    private UICalculation ui;
     public ToolBarView(@NonNull Context context) {
         this(context, null);
     }
@@ -55,26 +61,40 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
 
     private int mode;
     private String title;
+    private int title_color;
+    private int title_size;
     private String hint;
     private String rtext;
+    private int rtext_color;
+    private int rtext_size;
     private int rimage;
+    private int return_image;
     private boolean search_editable;
     private boolean have_return;
     private boolean have_voice;
+    private int background_color;
     private OnToolBarCallback callback;
     private OnTextWatcher onTextWatcher;
 
     private void init(AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        color = new ColorManager(getContext());
+        ui = new UICalculation(getContext());
         TypedArray typedArray = getContext().getTheme().obtainStyledAttributes(attrs, R.styleable.ToolBarView, defStyleAttr, defStyleRes);
         try {
             mode = typedArray.getInt(R.styleable.ToolBarView_toolbar_mode, 0);
             title = typedArray.getString(R.styleable.ToolBarView_toolbar_title);
+            title_color = typedArray.getColor(R.styleable.ToolBarView_toolbar_title_color, color.getTextColorPrimary());
+            title_size = (int) typedArray.getDimension(R.styleable.ToolBarView_toolbar_title_size, ui.dp2px(17));
             hint = typedArray.getString(R.styleable.ToolBarView_toolbar_hint);
             rtext = typedArray.getString(R.styleable.ToolBarView_toolbar_rtext);
+            rtext_color = typedArray.getColor(R.styleable.ToolBarView_toolbar_rtext_color, color.getTextColorDefault());
+            rtext_size = (int) typedArray.getDimension(R.styleable.ToolBarView_toolbar_rtext_size, ui.dp2px(14));
             rimage = typedArray.getResourceId(R.styleable.ToolBarView_toolbar_rimage, 0);
+            return_image = typedArray.getResourceId(R.styleable.ToolBarView_toolbar_return_image, R.mipmap.ui_toolbar_return);
             search_editable = typedArray.getBoolean(R.styleable.ToolBarView_toolbar_search_editable, true);
             have_return = typedArray.getBoolean(R.styleable.ToolBarView_toolbar_have_return, true);
             have_voice = typedArray.getBoolean(R.styleable.ToolBarView_toolbar_have_voice, false);
+            background_color = typedArray.getColor(R.styleable.ToolBarView_toolbar_background_color, color.getColorForeground());
         } finally {
             typedArray.recycle();
         }
@@ -88,15 +108,17 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
         }
     }
 
-    private View ui_toolbar_return;
+    private ImageView ui_toolbar_return;
     private TextView ui_toolbar_title;
     private TextView ui_toolbar_rtext;
     private ImageView ui_toolbar_rimage;
+    private ConstraintLayout ui_toolbar_parent;
     private void initMode0() {
         ui_toolbar_return = findViewById(R.id.ui_toolbar_return);
         ui_toolbar_title = findViewById(R.id.ui_toolbar_title);
         ui_toolbar_rtext = findViewById(R.id.ui_toolbar_rtext);
         ui_toolbar_rimage = findViewById(R.id.ui_toolbar_rimage);
+        ui_toolbar_parent = findViewById(R.id.ui_toolbar_parent);
 
         ui_toolbar_return.setOnClickListener(this);
         ui_toolbar_rtext.setOnClickListener(this);
@@ -104,8 +126,14 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
 
         setHaveReturn(have_return);
         setTitle(title);
+        setTitleColor(title_color);
+        setTitleSize(title_size, false);
         setRText(rtext);
+        setRTextColor(rtext_color);
+        setRTextSize(rtext_size, false);
         setRImage(rimage);
+        setReturnImage(return_image);
+        setBackgroundColor(background_color);
     }
 
     /**
@@ -131,6 +159,38 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
     }
 
     /**
+     * 设置右侧按钮的文本颜色
+     * @param color A color value in the form 0xAARRGGBB.
+     */
+    public void setRTextColor(@ColorInt int color) {
+        if (ui_toolbar_rtext == null) return;
+        ui_toolbar_rtext.setTextColor(color);
+    }
+
+    public void setTitleColor(@ColorInt int color) {
+        if (ui_toolbar_title == null) return;
+        ui_toolbar_title.setTextColor(color);
+    }
+
+    public void setTitleSize(int sp) {
+        setTitleSize(sp, true);
+    }
+
+    public void setTitleSize(int sp, boolean isSp) {
+        if (ui_toolbar_title == null) return;
+        ui_toolbar_title.setTextSize(isSp ? TypedValue.COMPLEX_UNIT_SP : TypedValue.COMPLEX_UNIT_PX, sp);
+    }
+
+    public void setRTextSize(int sp) {
+        setRTextSize(sp, true);
+    }
+
+    public void setRTextSize(int sp, boolean isSp) {
+        if (ui_toolbar_rtext == null) return;
+        ui_toolbar_rtext.setTextSize(isSp ? TypedValue.COMPLEX_UNIT_SP : TypedValue.COMPLEX_UNIT_PX, sp);
+    }
+
+    /**
      * 设置右侧按钮的图片
      * 仅在 Title 模式下有效
      */
@@ -141,6 +201,12 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
         else ui_toolbar_rimage.setVisibility(VISIBLE);
 
         ui_toolbar_rimage.setImageResource(rimage);
+    }
+
+    public void setReturnImage(@DrawableRes int rimage) {
+        if (ui_toolbar_return == null) return;
+
+        ui_toolbar_return.setImageResource(rimage);
     }
 
     /**
@@ -160,6 +226,7 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
         ui_toolbar_rtext = findViewById(R.id.ui_toolbar_rtext);
         ui_toolbar_content = findViewById(R.id.ui_toolbar_content);
         ui_toolbar_voice = findViewById(R.id.ui_toolbar_voice);
+        ui_toolbar_parent = findViewById(R.id.ui_toolbar_parent);
 
         ui_toolbar_return.setOnClickListener(this);
         ui_toolbar_rtext.setOnClickListener(this);
@@ -170,8 +237,10 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
         setHaveReturn(have_return);
         setRText(rtext);
         setContent("");
+        setHint(hint);
         setContentEditable(search_editable);
         setHaveVoice(have_voice);
+        setBackgroundColor(background_color);
     }
 
     /**
@@ -180,6 +249,7 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
      */
     public void setHint(String hint) {
         if (ui_toolbar_content == null) return;
+        if (hint == null) return;
 
         this.hint = hint;
         ui_toolbar_content.setHint(hint);
@@ -187,13 +257,11 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
 
     /**
      * 设置搜索框的本文内容
-     * 如果有文本则显示文本, 没有文本则显示提示信息
      */
     public void setContent(CharSequence content) {
         if (ui_toolbar_content == null) return;
 
-        if (TextUtils.isEmpty(content)) ui_toolbar_content.setHint(hint);
-        else ui_toolbar_content.setText(content);
+        ui_toolbar_content.setText(content);
     }
 
     /**
@@ -242,13 +310,23 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
         this.onTextWatcher = onTextWatcher;
     }
 
+    /**
+     * 设置背景颜色
+     * @param color
+     */
+    @Override
+    public void setBackgroundColor(int color) {
+        ui_toolbar_parent.setBackgroundColor(color);
+    }
+
     @Override
     public void onClick(View v) {
+        if (callback == null && v == ui_toolbar_return) ((FragmentActivity) getContext()).finish();
         if (callback == null) return;
 
         if (v == ui_toolbar_return) {
-            final boolean isclose = callback.onReturn();
-            if (isclose) ((FragmentActivity) getContext()).finish();
+            final boolean isUserClose = callback.onReturn();
+            if (!isUserClose) ((FragmentActivity) getContext()).finish();
         }
         else if (v == ui_toolbar_rtext || v == ui_toolbar_rimage) callback.onRightButton();
         else if (v == ui_toolbar_voice) callback.onVoice();

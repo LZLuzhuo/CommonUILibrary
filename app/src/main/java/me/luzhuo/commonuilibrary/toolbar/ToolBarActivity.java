@@ -24,7 +24,7 @@ public class ToolBarActivity extends AppCompatActivity {
             @Override
             public boolean onReturn() {
                 Log.e(TAG, "onReturn");
-                return false;
+                return true;
             }
 
             @Override

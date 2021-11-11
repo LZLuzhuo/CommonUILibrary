@@ -22,7 +22,7 @@ public class OnToolBarCallback {
      * 返回
      * 不重写, 默认关闭
      */
-    public boolean onReturn(){ return true; }
+    public boolean onReturn(){ return false; }
 
     /**
      * 右侧按钮的点击
