@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- ============== ToolBarView ============== -->
     <declare-styleable name="ToolBarView">
         <attr name="toolbar_mode" format="enum">
             <enum name="Title" value="0"/>
@@ -18,5 +19,68 @@
         <attr name="toolbar_have_return" format="boolean"/>
         <attr name="toolbar_have_voice" format="boolean"/>
         <attr name="toolbar_background_color" format="color"/>
+    </declare-styleable>
+
+    <!-- ============== NumberProgressBar ============== -->
+    <declare-styleable name="NumberProgressBar">
+        <attr name="progress_current" format="integer"/>
+        <attr name="progress_max" format="integer"/>
+
+        <attr name="progress_unreached_color" format="color"/>
+        <attr name="progress_reached_color" format="color"/>
+
+        <attr name="progress_reached_bar_height" format="dimension"/>
+        <attr name="progress_unreached_bar_height" format="dimension"/>
+
+        <attr name="progress_text_size" format="dimension"/>
+        <attr name="progress_text_color" format="color"/>
+
+        <attr name="progress_text_offset" format="dimension"/>
+
+        <attr name="progress_text_visibility" format="enum">
+            <enum name="visible" value="0"/>
+            <enum name="invisible" value="1"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="Themes">
+        <attr name="numberProgressBarStyle" format="reference"/>
+    </declare-styleable>
+
+    <!-- ============== IndexBar ============== -->
+    <declare-styleable name="IndexBarView">
+        <attr name="index_text_size_normal" format="dimension"/>
+        <attr name="index_text_color_normal" format="color"/>
+        <attr name="index_text_size_pressed" format="dimension"/>
+        <attr name="index_text_color_pressed" format="color"/>
+        <!-- 此值只对 layout_height="wrap_content" 时有效果 -->
+        <attr name="index_text_space" format="dimension"/>
+    </declare-styleable>
+
+    <!-- ============== CheckButton ============== -->
+    <declare-styleable name="CheckButton">
+        <attr name="check_checkable" format="boolean"/>
+        <attr name="check_check" format="boolean"/>
+    </declare-styleable>
+
+    <!-- ============== TagButtonView ============== -->
+    <declare-styleable name="TagButtonView">
+        <attr name="tag_span_count" format="integer"/>
+        <attr name="tag_interval" format="dimension"/>
+        <attr name="tag_single" format="boolean"/>
+        <attr name="tag_cancelable" format="boolean"/>
+    </declare-styleable>
+
+    <!-- ============== YearMonthDayView ============== -->
+    <declare-styleable name="YearMonthDayView">
+        <attr name="year_style" format="integer"/>
+        <attr name="year_mode" format="flags">
+            <flag name="year" value="1"/>
+            <flag name="month" value="2"/>
+            <flag name="day" value="4"/>
+            <flag name="hour" value="8"/>
+            <flag name="minute" value="16"/>
+            <flag name="second" value="32"/>
+        </attr>
     </declare-styleable>
 </resources>
