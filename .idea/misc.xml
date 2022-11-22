@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/app/src/main/res/layout/activity_toolbar.xml" value="0.1" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_check_button_checked.xml" value="0.16" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_edit_word_line.xml" value="0.16" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_edit_word_rec.xml" value="0.16" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_editword_cursor_rec.xml" value="0.16" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/layout/ui_more_select_layout.xml" value="0.2" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/layout/ui_toolbar_search_return.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

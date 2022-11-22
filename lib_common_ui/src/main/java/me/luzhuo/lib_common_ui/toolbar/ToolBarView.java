@@ -17,6 +17,7 @@ package me.luzhuo.lib_common_ui.toolbar;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -70,6 +71,7 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
     private int rimage;
     private int return_image;
     private boolean search_editable;
+    private int search_maxLength;
     private boolean have_return;
     private boolean have_voice;
     private int background_color;
@@ -92,6 +94,7 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
             rimage = typedArray.getResourceId(R.styleable.ToolBarView_toolbar_rimage, 0);
             return_image = typedArray.getResourceId(R.styleable.ToolBarView_toolbar_return_image, R.mipmap.ui_toolbar_return);
             search_editable = typedArray.getBoolean(R.styleable.ToolBarView_toolbar_search_editable, true);
+            search_maxLength = typedArray.getInt(R.styleable.ToolBarView_toolbar_search_maxLength, 5000);
             have_return = typedArray.getBoolean(R.styleable.ToolBarView_toolbar_have_return, true);
             have_voice = typedArray.getBoolean(R.styleable.ToolBarView_toolbar_have_voice, false);
             background_color = typedArray.getColor(R.styleable.ToolBarView_toolbar_background_color, color.getColorForeground());
@@ -241,6 +244,7 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
         setContentEditable(search_editable);
         setHaveVoice(have_voice);
         setBackgroundColor(background_color);
+        setSearchMaxLength(search_maxLength);
     }
 
     /**
@@ -319,6 +323,10 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
         ui_toolbar_parent.setBackgroundColor(color);
     }
 
+    private void setSearchMaxLength(int search_maxLength) {
+        ui_toolbar_content.setFilters(new InputFilter[]{ new InputFilter.LengthFilter(search_maxLength) });
+    }
+
     @Override
     public void onClick(View v) {
         if (callback == null && v == ui_toolbar_return) ((FragmentActivity) getContext()).finish();
@@ -343,7 +351,7 @@ public class ToolBarView extends ConstraintLayout implements View.OnClickListene
         return false;
     }
 
-    private TextWatcher textWatcher = new TextWatcherImpl(){
+    private final TextWatcher textWatcher = new TextWatcherImpl(){
         @Override
         public void afterTextChanged(Editable s) {
             if (onTextWatcher != null) onTextWatcher.onTextWatcher(s.subSequence(0, s.length()));

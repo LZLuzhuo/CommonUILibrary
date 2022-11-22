@@ -31,6 +31,7 @@ import me.luzhuo.lib_common_ui.R;
  * @Creation Date: 2020/11/11 10:32
  * @Copyright: Copyright 2020 Luzhuo. All rights reserved.
  **/
+@Deprecated
 public class CheckButton extends RelativeLayout {
     private View check_button_view;
     private ImageView checked_icon;

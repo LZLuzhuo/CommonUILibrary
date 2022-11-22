@@ -9,13 +9,14 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:toolbar_mode="Title"
+        app:toolbar_mode="Search"
         app:toolbar_hint="搜索提示内容"
         app:toolbar_title="标题"
         app:toolbar_title_size="17sp"
         app:toolbar_rtext="取消"
-        app:toolbar_search_editable="false"
+        app:toolbar_search_editable="true"
         app:toolbar_have_voice="true"
-        app:toolbar_rtext_size="14sp" />
+        app:toolbar_rtext_size="14sp"
+        app:toolbar_search_maxLength="3"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>
