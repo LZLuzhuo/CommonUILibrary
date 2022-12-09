@@ -15,3 +15,5 @@
 gradle.properties
 *maven.gradle
 *jcenter.gradle
+*mavenCentral.gradle
+/.idea

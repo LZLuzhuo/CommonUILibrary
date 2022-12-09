@@ -58,12 +58,6 @@
         <attr name="index_text_space" format="dimension"/>
     </declare-styleable>
 
-    <!-- ============== CheckButton ============== -->
-    <declare-styleable name="CheckButton">
-        <attr name="check_checkable" format="boolean"/>
-        <attr name="check_check" format="boolean"/>
-    </declare-styleable>
-
     <!-- ============== TagButtonView ============== -->
     <declare-styleable name="TagButtonView">
         <attr name="tag_span_count" format="integer"/>

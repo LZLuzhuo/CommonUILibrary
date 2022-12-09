@@ -3,15 +3,15 @@
 # 1. 导包
 
 ```groovy
-implementation 'me.luzhuo.android:lib_common_ui:1.0.14-SNAPSHOT'
+implementation 'me.luzhuo.android:lib_common_ui:1.1.29'
 
-implementation 'me.luzhuo.android:emoji:1.0.0-SNAPSHOT'
+implementation 'me.luzhuo.android:emoji:1.0.0'
 implementation project(path: ':emoji_biaoqing')
 ```
 
 # 2. 使用文档
 
-https://www.yuque.com/luzhuo/library
+https://www.yuque.com/luzhuo/library/lib_common_ui
 
 # 3. 版权
 

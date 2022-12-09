@@ -18,7 +18,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".emoji.EmojiActivity" />
-        <activity android:name=".ToolbarActivity" />
         <activity android:name=".toolbar.ToolBarActivity" />
     </application>
 

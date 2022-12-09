@@ -4,12 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/app/src/main/res/layout/activity_toolbar.xml" value="0.1" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_bottom_dialog.xml" value="0.1" />
         <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_check_button_checked.xml" value="0.16" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_check_button_default.xml" value="0.1655" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_check_button_svg.xml" value="0.1655" />
         <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_edit_word_line.xml" value="0.16" />
         <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_edit_word_rec.xml" value="0.16" />
         <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_editword_cursor_rec.xml" value="0.16" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_more_select_icon_close.xml" value="0.1" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/drawable/ui_year_month_day_bg.xml" value="0.1" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/layout/ui_check_button.xml" value="0.22916666666666666" />
         <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/layout/ui_more_select_layout.xml" value="0.2" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/layout/ui_order_buttons_item_bottom.xml" value="0.15896739130434784" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/layout/ui_order_buttons_item_header.xml" value="0.15896739130434784" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/layout/ui_right_menu.xml" value="0.34782608695652173" />
         <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/layout/ui_toolbar_search_return.xml" value="0.1" />
+        <entry key="..\:/Code/PersonalProject/Android/Libraries/CommonUILibrary/lib_common_ui/src/main/res/layout/ui_toolbar_title_return.xml" value="0.34782608695652173" />
       </map>
     </option>
   </component>
